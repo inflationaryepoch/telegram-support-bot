@@ -50,14 +50,15 @@ def forward_to_user(update, context):
     if update.message.reply_to_message.forward_from:
         user_id = update.message.reply_to_message.forward_from.id
     elif REPLY_TO_THIS_MESSAGE in update.message.reply_to_message.forward_from:
-        try:
-             user_id = update.message.reply_to_message.forward_from.id
+       try:
+            user_id = int(update.message.reply_to_message.forward_from.id)
         except ValueError:
             user_id = None
     if user_id:
         context.bot.copy_message(
-            chat_id=TELEGRAM_SUPPORT_CHAT_ID,
-            text=WRONG_REPLY
+            message_id=update.message.message_id,
+            chat_id=user_id,
+            from_chat_id=update.message.chat_id
         )
     else:
         context.bot.send_message(
