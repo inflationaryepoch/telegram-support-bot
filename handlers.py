@@ -62,8 +62,9 @@ def forward_to_user(update, context):
         )
     else:
         context.bot.send_message(
-            chat_id=TELEGRAM_SUPPORT_CHAT_ID,
-            text=WRONG_REPLY
+            message_id=update.message.message_id,
+            chat_id=user_id,
+            from_chat_id=update.message.chat_id
         )
 
 def setup_dispatcher(dp):
