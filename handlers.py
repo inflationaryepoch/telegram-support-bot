@@ -49,7 +49,7 @@ def forward_to_user(update, context):
     user_id = None
     if update.message.reply_to_message.forward_from:
         user_id = update.message.reply_to_message.forward_from.id
-    elif REPLY_TO_THIS_MESSAGE in update.message.reply_to_message.text:
+    elif REPLY_TO_THIS_MESSAGE in update.message.reply_to_message.forward_from:
         try:
              user_id = update.message.reply_to_message.forward_from.id
         except ValueError:
