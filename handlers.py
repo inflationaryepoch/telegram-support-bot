@@ -25,7 +25,7 @@ def forward_to_chat(update, context):
         context.bot.send_message(
             chat_id=TELEGRAM_SUPPORT_CHAT_ID,
             reply_to_message_id=forwarded.message_id,
-
+            text=f'{update.message.from_user.id}\n{REPLY_TO_THIS_MESSAGE}'
         )
 
 
@@ -54,7 +54,6 @@ def forward_to_user(update, context):
             user_id = int(update.message.reply_to_message.text.split('\n')[0])
         except ValueError:
             user_id = None
-
     if user_id:
         context.bot.copy_message(
             message_id=update.message.message_id,
@@ -66,6 +65,7 @@ def forward_to_user(update, context):
             chat_id=TELEGRAM_SUPPORT_CHAT_ID,
             text=WRONG_REPLY
         )
+
 
 def setup_dispatcher(dp):
     dp.add_handler(CommandHandler('start', start))
