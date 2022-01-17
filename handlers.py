@@ -52,7 +52,6 @@ def forward_to_user(update, context):
     elif update.message.reply_to_message.forward_from:
         user_id = update.message.reply_to_message.forward_from.id
 
-
             user_id = None
     if user_id:
         context.bot.copy_message(
