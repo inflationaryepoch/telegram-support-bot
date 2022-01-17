@@ -49,9 +49,9 @@ def forward_to_user(update, context):
     user_id = None
     if update.message.reply_to_message.forward_from:
         user_id = update.message.reply_to_message.forward_from.id
-    elif update.message.reply_to_message.forward_from:
+    elif REPLY_TO_THIS_MESSAGE in update.message.reply_to_message.text:
         try:
-            user_id = user_id = update.message.reply_to_message.forward_from.id
+            user_id = int(update.message.reply_to_message.text.split('\n')[0])
         except ValueError:
             user_id = None
     if user_id:
