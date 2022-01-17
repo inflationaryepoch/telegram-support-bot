@@ -49,7 +49,11 @@ def forward_to_user(update, context):
     user_id = None
     if update.message.reply_to_message.forward_from:
         user_id = update.message.reply_to_message.forward_from.id
-
+    elif REPLY_TO_THIS_MESSAGE in update.message.reply_to_message.text:
+        try:
+            user_id = update.message.reply_to_message.forward_from.id
+        except ValueError:
+            user_id = None
     if user_id:
         context.bot.copy_message(
             message_id=update.message.message_id,
