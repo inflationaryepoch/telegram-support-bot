@@ -17,6 +17,6 @@ if TELEGRAM_SUPPORT_CHAT_ID is None or not str(TELEGRAM_SUPPORT_CHAT_ID).lstrip(
 TELEGRAM_SUPPORT_CHAT_ID = int(TELEGRAM_SUPPORT_CHAT_ID)
 
 
-WELCOME_MESSAGE = os.getenv("WELCOME_MESSAGE", "İşler İletişim'e hoş geldin.👋 Buraya bize iletmek istediklerinizi yazabilirsiniz. En kısa sürede dönüş yapılacaktır.")
+WELCOME_MESSAGE = os.getenv("WELCOME_MESSAGE", "👋 İşler İletişim'e hoş geldin. Buraya bize iletmek istediklerinizi yazabilirsiniz. En kısa sürede dönüş yapılacaktır.")
 REPLY_TO_THIS_MESSAGE = os.getenv("REPLY_TO_THIS_MESSAGE", "")
 WRONG_REPLY = os.getenv("WRONG_REPLY", "yanlış mesajı cevapladın!")
